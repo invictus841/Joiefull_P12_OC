@@ -13,6 +13,8 @@
 		ACDB2F782DCD006D00AE0FDA /* TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDB2F772DCD006D00AE0FDA /* TextStyle.swift */; };
 		ACDB2F7C2DCD012F00AE0FDA /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACDB2F7B2DCD012F00AE0FDA /* OpenSans-SemiBold.ttf */; };
 		ACDB2F7E2DCD013D00AE0FDA /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACDB2F7D2DCD013D00AE0FDA /* OpenSans-Regular.ttf */; };
+		ACDB2F812DCD041000AE0FDA /* ClothingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDB2F802DCD041000AE0FDA /* ClothingItem.swift */; };
+		ACDB2F832DCD042500AE0FDA /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDB2F822DCD042500AE0FDA /* APIService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		ACDB2F7B2DCD012F00AE0FDA /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		ACDB2F7D2DCD013D00AE0FDA /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		ACDB2F7F2DCD018D00AE0FDA /* Joiefull-P12-OC-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Joiefull-P12-OC-Info.plist"; sourceTree = SOURCE_ROOT; };
+		ACDB2F802DCD041000AE0FDA /* ClothingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingItem.swift; sourceTree = "<group>"; };
+		ACDB2F822DCD042500AE0FDA /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 				ACDB2F792DCD010000AE0FDA /* Shared */,
 				ACDB2F702DCCF7D300AE0FDA /* Assets.xcassets */,
 				ACDB2F712DCCF7D300AE0FDA /* ContentView.swift */,
+				ACDB2F802DCD041000AE0FDA /* ClothingItem.swift */,
+				ACDB2F822DCD042500AE0FDA /* APIService.swift */,
 				ACDB2F722DCCF7D300AE0FDA /* Joiefull_P12_OCApp.swift */,
 			);
 			path = Joiefull_P12_OC;
@@ -157,6 +163,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACDB2F812DCD041000AE0FDA /* ClothingItem.swift in Sources */,
+				ACDB2F832DCD042500AE0FDA /* APIService.swift in Sources */,
 				ACDB2F782DCD006D00AE0FDA /* TextStyle.swift in Sources */,
 				ACDB2F752DCCF7D300AE0FDA /* ContentView.swift in Sources */,
 				ACDB2F762DCCF7D300AE0FDA /* Joiefull_P12_OCApp.swift in Sources */,
