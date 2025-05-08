@@ -62,14 +62,10 @@
 		ACDB2F732DCCF7D300AE0FDA /* Joiefull_P12_OC */ = {
 			isa = PBXGroup;
 			children = (
+				ACDB2F872DCD55C400AE0FDA /* Features */,
+				ACDB2F862DCD559C00AE0FDA /* Core */,
 				ACDB2F7F2DCD018D00AE0FDA /* Joiefull-P12-OC-Info.plist */,
 				ACDB2F792DCD010000AE0FDA /* Shared */,
-				ACDB2F702DCCF7D300AE0FDA /* Assets.xcassets */,
-				ACDB2F712DCCF7D300AE0FDA /* ContentView.swift */,
-				ACDB2F842DCD46B800AE0FDA /* CatalogView.swift */,
-				ACDB2F802DCD041000AE0FDA /* ClothingItem.swift */,
-				ACDB2F822DCD042500AE0FDA /* APIService.swift */,
-				ACDB2F722DCCF7D300AE0FDA /* Joiefull_P12_OCApp.swift */,
 			);
 			path = Joiefull_P12_OC;
 			sourceTree = "<group>";
@@ -77,6 +73,8 @@
 		ACDB2F792DCD010000AE0FDA /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				ACDB2F702DCCF7D300AE0FDA /* Assets.xcassets */,
+				ACDB2F772DCD006D00AE0FDA /* TextStyle.swift */,
 				ACDB2F7A2DCD010E00AE0FDA /* Fonts */,
 			);
 			path = Shared;
@@ -87,9 +85,35 @@
 			children = (
 				ACDB2F7D2DCD013D00AE0FDA /* OpenSans-Regular.ttf */,
 				ACDB2F7B2DCD012F00AE0FDA /* OpenSans-SemiBold.ttf */,
-				ACDB2F772DCD006D00AE0FDA /* TextStyle.swift */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		ACDB2F862DCD559C00AE0FDA /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				ACDB2F712DCCF7D300AE0FDA /* ContentView.swift */,
+				ACDB2F722DCCF7D300AE0FDA /* Joiefull_P12_OCApp.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		ACDB2F872DCD55C400AE0FDA /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				ACDB2F882DCD55EE00AE0FDA /* API */,
+				ACDB2F842DCD46B800AE0FDA /* CatalogView.swift */,
+				ACDB2F802DCD041000AE0FDA /* ClothingItem.swift */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		ACDB2F882DCD55EE00AE0FDA /* API */ = {
+			isa = PBXGroup;
+			children = (
+				ACDB2F822DCD042500AE0FDA /* APIService.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
