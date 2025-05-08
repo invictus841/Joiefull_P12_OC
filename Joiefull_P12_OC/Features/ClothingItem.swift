@@ -12,11 +12,11 @@ struct ClothingItem: Identifiable, Codable, Equatable {
         let url: URL
         let description: String
     }
-
+    
     let id: Int
     let picture: Picture
     let name: String
-    let category: String
+    let category: ClothingCategory
     let likes: Int
     let price: Double
     let originalPrice: Double
@@ -28,6 +28,37 @@ struct ClothingItem: Identifiable, Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case id, picture, name, category, likes, price
         case originalPrice = "original_price"
+    }
+    
+    static var sample: ClothingItem {
+        ClothingItem(
+            id: 1,
+            picture: Picture(
+                url: URL(string: "https://raw.githubusercontent.com/OpenClassrooms-Student-Center/Cr-ez-une-interface-dynamique-et-accessible-avec-SwiftUI/main/img/tops/1.jpg")!,
+                description: "Homme en costume et veste de blazer qui regarde la caméra"
+            ),
+            name: "Blazer en laine stylé",
+            category: .tops,
+            likes: 42,
+            price: 89.99,
+            originalPrice: 129.99
+        )
+    }
+}
+
+enum ClothingCategory: String, CaseIterable, Codable {
+    case tops = "TOPS"
+    case bottoms = "BOTTOMS"
+    case shoes = "SHOES"
+    case accessories = "ACCESSORIES"
+
+    var displayName: String {
+        switch self {
+        case .tops: return "Tops"
+        case .bottoms: return "Bottoms"
+        case .shoes: return "Shoes"
+        case .accessories: return "Accessories"
+        }
     }
 }
 
