@@ -8,17 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, Open Sans!")
-                .textStyle(.sectionTitle)
+    @StateObject var viewModel = CatalogViewModel()
 
+        var body: some View {
+            Group {
+                if viewModel.isLoading {
+                    ProgressView("Loading...")
+                } else if let error = viewModel.error {
+                    Text("Error: \(error)")
+                } else {
+                    List(viewModel.items) { item in
+                        Text(item.name)
+                    }
+                }
+            }
+            .task {
+                await viewModel.loadItems()
+            }
         }
-        .padding()
-    }
 }
 
 #Preview {
