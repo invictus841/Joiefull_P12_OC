@@ -6,17 +6,25 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		ACDB2F742DCCF7D300AE0FDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACDB2F702DCCF7D300AE0FDA /* Assets.xcassets */; };
+		ACDB2F752DCCF7D300AE0FDA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDB2F712DCCF7D300AE0FDA /* ContentView.swift */; };
+		ACDB2F762DCCF7D300AE0FDA /* Joiefull_P12_OCApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDB2F722DCCF7D300AE0FDA /* Joiefull_P12_OCApp.swift */; };
+		ACDB2F782DCD006D00AE0FDA /* TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDB2F772DCD006D00AE0FDA /* TextStyle.swift */; };
+		ACDB2F7C2DCD012F00AE0FDA /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACDB2F7B2DCD012F00AE0FDA /* OpenSans-SemiBold.ttf */; };
+		ACDB2F7E2DCD013D00AE0FDA /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACDB2F7D2DCD013D00AE0FDA /* OpenSans-Regular.ttf */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		ACDB2F622DCCF7CD00AE0FDA /* Joiefull_P12_OC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Joiefull_P12_OC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACDB2F702DCCF7D300AE0FDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ACDB2F712DCCF7D300AE0FDA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		ACDB2F722DCCF7D300AE0FDA /* Joiefull_P12_OCApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joiefull_P12_OCApp.swift; sourceTree = "<group>"; };
+		ACDB2F772DCD006D00AE0FDA /* TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyle.swift; sourceTree = "<group>"; };
+		ACDB2F7B2DCD012F00AE0FDA /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		ACDB2F7D2DCD013D00AE0FDA /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		ACDB2F7F2DCD018D00AE0FDA /* Joiefull-P12-OC-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Joiefull-P12-OC-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		ACDB2F642DCCF7CD00AE0FDA /* Joiefull_P12_OC */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Joiefull_P12_OC;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		ACDB2F5F2DCCF7CD00AE0FDA /* Frameworks */ = {
@@ -32,7 +40,7 @@
 		ACDB2F592DCCF7CD00AE0FDA = {
 			isa = PBXGroup;
 			children = (
-				ACDB2F642DCCF7CD00AE0FDA /* Joiefull_P12_OC */,
+				ACDB2F732DCCF7D300AE0FDA /* Joiefull_P12_OC */,
 				ACDB2F632DCCF7CD00AE0FDA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +51,36 @@
 				ACDB2F622DCCF7CD00AE0FDA /* Joiefull_P12_OC.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		ACDB2F732DCCF7D300AE0FDA /* Joiefull_P12_OC */ = {
+			isa = PBXGroup;
+			children = (
+				ACDB2F7F2DCD018D00AE0FDA /* Joiefull-P12-OC-Info.plist */,
+				ACDB2F792DCD010000AE0FDA /* Shared */,
+				ACDB2F702DCCF7D300AE0FDA /* Assets.xcassets */,
+				ACDB2F712DCCF7D300AE0FDA /* ContentView.swift */,
+				ACDB2F722DCCF7D300AE0FDA /* Joiefull_P12_OCApp.swift */,
+			);
+			path = Joiefull_P12_OC;
+			sourceTree = "<group>";
+		};
+		ACDB2F792DCD010000AE0FDA /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				ACDB2F7A2DCD010E00AE0FDA /* Fonts */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		ACDB2F7A2DCD010E00AE0FDA /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				ACDB2F7D2DCD013D00AE0FDA /* OpenSans-Regular.ttf */,
+				ACDB2F7B2DCD012F00AE0FDA /* OpenSans-SemiBold.ttf */,
+				ACDB2F772DCD006D00AE0FDA /* TextStyle.swift */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -59,9 +97,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				ACDB2F642DCCF7CD00AE0FDA /* Joiefull_P12_OC */,
 			);
 			name = Joiefull_P12_OC;
 			packageProductDependencies = (
@@ -109,6 +144,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACDB2F7C2DCD012F00AE0FDA /* OpenSans-SemiBold.ttf in Resources */,
+				ACDB2F7E2DCD013D00AE0FDA /* OpenSans-Regular.ttf in Resources */,
+				ACDB2F742DCCF7D300AE0FDA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +157,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACDB2F782DCD006D00AE0FDA /* TextStyle.swift in Sources */,
+				ACDB2F752DCCF7D300AE0FDA /* ContentView.swift in Sources */,
+				ACDB2F762DCCF7D300AE0FDA /* Joiefull_P12_OCApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +297,7 @@
 				DEVELOPMENT_TEAM = NJWKSQXR8C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Joiefull-P12-OC-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -284,6 +326,7 @@
 				DEVELOPMENT_TEAM = NJWKSQXR8C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Joiefull-P12-OC-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
