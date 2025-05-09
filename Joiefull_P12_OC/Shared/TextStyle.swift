@@ -57,3 +57,19 @@ extension Text {
         self.font(style.font)
     }
 }
+
+enum IconSize {
+    case heart(isPad: Bool, isDetail: Bool)
+
+    var size: CGSize {
+        switch self {
+        case .heart(let isPad, let isDetail):
+            switch (isPad, isDetail) {
+            case (false, false): return CGSize(width: 14, height: 12) // iPhone - Catalog
+            case (false, true):  return CGSize(width: 19, height: 16) // iPhone - Detail
+            case (true, false):  return CGSize(width: 14, height: 12) // iPad - Catalog
+            case (true, true):   return CGSize(width: 24, height: 20) // iPad - Detail
+            }
+        }
+    }
+}
