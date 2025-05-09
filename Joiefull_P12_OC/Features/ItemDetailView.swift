@@ -10,6 +10,8 @@ import SwiftUI
 struct ItemDetailView: View {
     let item: ClothingItem
     let isPad: Bool
+    
+    @State private var userComment: String = ""
 
     var imageSize: CGSize {
         isPad ? CGSize(width: 451, height: 408) : CGSize(width: 328, height: 431)
@@ -24,6 +26,7 @@ struct ItemDetailView: View {
                 priceSection
                 descriptionSection
                 ratingSection
+                commentSection
             }
             .frame(maxWidth: imageSize.width)
             .padding()
@@ -119,21 +122,35 @@ private extension ItemDetailView {
         }
         .padding(.top, 16)
     }
+    
+    var commentSection: some View {
+            TextField("Partagez ici vos impressions sur cette pièce", text: $userComment)
+                .frame(height: isPad ? 69 : 53)
+                .padding(.trailing, 12)
+                .padding(.leading, 8)
+                .padding(.top, 0)
+                .padding(.bottom, 18)
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(Color.gray.opacity(0.3), lineWidth: 1)
+                )
+                .font(.custom("OpenSans-Regular", size: isPad ? 18 : 14))
+                .accessibilityLabel(Text("Zone de texte pour vos impressions"))
+                .padding(.vertical)
+        }
 }
 
 
 #Preview {
     VStack {
-//        Text("on iPhone")
-//            .textStyle(.sectionTitle)
+// MARK: - iPhone
         ItemDetailView(item: .sample, isPad: false)
     }
 }
 
 #Preview {
     VStack {
-//        Text("on iPad")
-//            .textStyle(.sectionTitle)
+// MARK: - iPad
         ItemDetailView(item: .sample, isPad: true)
     }
 }
