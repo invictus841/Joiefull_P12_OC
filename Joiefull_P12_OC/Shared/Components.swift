@@ -7,12 +7,31 @@
 
 import SwiftUI
 
-struct Components: View {
+struct FavoriteBubble: View {
+    let count: Int
+    let isPad: Bool
+    let isDetail: Bool
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        let size = IconSize.heart(isPad: isPad, isDetail: isDetail).size
+
+        HStack(spacing: 6) {
+            Image("heartEmpty")
+                .resizable()
+                .frame(width: size.width, height: size.height)
+
+            Text("\(count)")
+                .textStyle(.favoriteCount(isPad: isPad, isDetail: isDetail))
+                .foregroundColor(.black)
+        }
+        .padding(.vertical, 4)
+        .padding(.horizontal, 8)
+        .background(Color.white)
+        .cornerRadius(30)
+        .padding(10)
     }
 }
 
 #Preview {
-    Components()
+    FavoriteBubble(count: 23, isPad: false, isDetail: false)
 }
