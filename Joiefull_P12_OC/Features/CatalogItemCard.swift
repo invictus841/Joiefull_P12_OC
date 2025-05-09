@@ -46,19 +46,7 @@ private extension CatalogItemCard {
                 }
             }
 
-            HStack(spacing: 6) {
-                Image("heartEmpty")
-                    .resizable()
-                    .frame(width: 14, height: 12)
-                Text("\(item.likes)")
-                    .textStyle(.favoriteCount(isPad: isPad, isDetail: false))
-                    .foregroundColor(.black)
-            }
-            .padding(.vertical, 4)
-            .padding(.horizontal, 8)
-            .background(Color.white)
-            .cornerRadius(30)
-            .padding(10)
+            FavoriteBubble(count: item.likes, isPad: isPad, isDetail: false)
         }
     }
 
