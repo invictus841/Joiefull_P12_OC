@@ -8,11 +8,132 @@
 import SwiftUI
 
 struct ItemDetailView: View {
+    let item: ClothingItem
+    let isPad: Bool
+
+    var imageSize: CGSize {
+        isPad ? CGSize(width: 451, height: 408) : CGSize(width: 328, height: 431)
+    }
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView {
+            VStack(alignment: .leading, spacing: 6) {
+                imageSection
+                    .padding(.bottom, 16)
+                headerSection
+                priceSection
+                descriptionSection
+                ratingSection
+            }
+            .frame(maxWidth: imageSize.width)
+            .padding()
+            .frame(maxWidth: .infinity, alignment: .center)
+        }
+    }
+}
+
+private extension ItemDetailView {
+    var imageSection: some View {
+        ZStack(alignment: .bottomTrailing) {
+            AsyncImage(url: item.picture.url) { phase in
+                if let image = phase.image {
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: imageSize.width, height: imageSize.height)
+                        .clipped()
+                        .cornerRadius(12)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(Color.gray.opacity(0.3), lineWidth: 1)
+                        )
+                        .accessibilityLabel(Text(item.picture.description))
+                } else {
+                    Rectangle()
+                        .fill(Color.gray.opacity(0.1))
+                        .frame(width: imageSize.width, height: imageSize.height)
+                }
+            }
+
+            FavoriteBubble(count: item.likes, isPad: isPad, isDetail: true)
+        }
+    }
+    
+    var headerSection: some View {
+        HStack(alignment: .top) {
+            HStack(spacing: 8) {
+                Text(item.name)
+                    .textStyle(.itemName(isPad: isPad, isDetail: true))
+                
+                Spacer()
+                
+                HStack(spacing: 4) {
+                    Image("filledStar")
+                        .resizable()
+                        .frame(width: 14, height: 14)
+                    Text("4.5")
+                        .textStyle(.ratingAverage(isPad: isPad, isDetail: true))
+                }
+            }
+            
+        }
+    }
+
+    var priceSection: some View {
+        HStack {
+            Text(String(format: "%.2f €", item.price))
+                .textStyle(.itemPrice(isPad: isPad, isDetail: true))
+
+            Spacer()
+            
+            if item.isDiscounted {
+                Text(String(format: "%.2f €", item.originalPrice))
+                    .textStyle(.itemPrice(isPad: isPad, isDetail: true))
+                    .strikethrough()
+                    .opacity(0.3)
+            }
+        }
+    }
+
+    var descriptionSection: some View {
+        Text(item.picture.description)
+            .textStyle(.description(isPad: isPad))
+            .padding(.top, 8)
+    }
+
+    var ratingSection: some View {
+        HStack(spacing: 14) {
+            Image("userPic")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 39, height: 39)
+                .clipShape(Circle())
+
+            HStack(spacing: 14) {
+                ForEach(0..<5, id: \.self) { _ in
+                    Image("emptyStar")
+                        .resizable()
+                        .frame(width: 25, height: 24)
+                }
+            }
+        }
+        .padding(.top, 16)
+    }
+}
+
+
+#Preview {
+    VStack {
+//        Text("on iPhone")
+//            .textStyle(.sectionTitle)
+        ItemDetailView(item: .sample, isPad: false)
     }
 }
 
 #Preview {
-    ItemDetailView()
+    VStack {
+//        Text("on iPad")
+//            .textStyle(.sectionTitle)
+        ItemDetailView(item: .sample, isPad: true)
+    }
 }
