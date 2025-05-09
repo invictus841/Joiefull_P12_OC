@@ -32,7 +32,10 @@ struct CatalogView: View {
                             ScrollView(.horizontal, showsIndicators: false) {
                                 LazyHStack(spacing: 16) {
                                     ForEach(items) { item in
-                                        CatalogItemCard(item: item, isPad: isPad)
+                                        NavigationLink(destination: ItemDetailView(item: item, isPad: isPad)) {
+                                            CatalogItemCard(item: item, isPad: isPad)
+                                        }
+                                        .buttonStyle(.plain)
                                     }
                                 }
                                 .padding(.horizontal)
@@ -52,5 +55,7 @@ struct CatalogView: View {
 
 
 #Preview {
-    CatalogView()
+    NavigationStack {
+        CatalogView()
+    }
 }
