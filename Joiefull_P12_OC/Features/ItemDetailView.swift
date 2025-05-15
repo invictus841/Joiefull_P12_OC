@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ItemDetailView: View {
+    @Environment(\.presentationMode) var presentationMode
+
     let item: ClothingItem
     let isPad: Bool
     
@@ -32,12 +34,13 @@ struct ItemDetailView: View {
             .padding()
             .frame(maxWidth: .infinity, alignment: .center)
         }
+        .navigationBarBackButtonHidden()
     }
 }
 
 private extension ItemDetailView {
     var imageSection: some View {
-        ZStack(alignment: .bottomTrailing) {
+        ZStack(alignment: .top) {
             AsyncImage(url: item.picture.url) { phase in
                 if let image = phase.image {
                     image
@@ -58,8 +61,38 @@ private extension ItemDetailView {
                 }
             }
 
-            FavoriteBubble(count: item.likes, isPad: isPad, isDetail: true)
+            HStack {
+                if !isPad {
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Image("backSymbol")
+                            .resizable()
+                            .frame(width: 16, height: 16)
+                    }
+                }
+
+                Spacer()
+
+                Button(action: {
+                    shareItem()
+                }) {
+                    Image("shareIcon")
+                        .resizable()
+                        .frame(width: 16, height: 18)
+                }
+            }
+            .padding()
+            
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    FavoriteBubble(count: item.likes, isPad: isPad, isDetail: true)
+                }
+            }
         }
+
     }
     
     var headerSection: some View {
