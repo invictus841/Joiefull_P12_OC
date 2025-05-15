@@ -140,6 +140,25 @@ private extension ItemDetailView {
         }
 }
 
+// MARK: - helpers
+private extension ItemDetailView {
+    func shareItem() {
+        let text = """
+        \(item.name) – \(String(format: "%.2f €", item.price))
+        Découvrez cette pièce sur l’app Joiefull!
+        """
+        let url = item.picture.url
+        let activityVC = UIActivityViewController(activityItems: [text, url], applicationActivities: nil)
+
+        // Present the share sheet
+        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let rootVC = scene.windows.first?.rootViewController {
+            rootVC.present(activityVC, animated: true, completion: nil)
+        }
+    }
+}
+
+
 
 #Preview {
     VStack {
