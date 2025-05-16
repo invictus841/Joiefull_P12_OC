@@ -71,6 +71,7 @@ struct ItemDetailView: View {
                             .resizable()
                             .frame(width: 16, height: 16)
                     }
+                    .accessibilityLabel("Retour à la liste")
                 }
 
                 Spacer()
@@ -80,10 +81,9 @@ struct ItemDetailView: View {
                 }) {
                     Image("shareIcon")
                         .resizable()
-                        .renderingMode(.template)
-                        .foregroundColor(.primary)
                         .frame(width: 16, height: 18)
                 }
+                .accessibilityLabel("Partager cet article")
             }
             .padding()
 
@@ -111,6 +111,8 @@ struct ItemDetailView: View {
                 Text("4.5")
                     .textStyle(.ratingAverage(isPad: isPad, isDetail: true))
             }
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel("Note moyenne 4,5 étoiles")
         }
     }
 
@@ -169,7 +171,8 @@ struct ItemDetailView: View {
                     .stroke(Color.gray.opacity(0.3), lineWidth: 1)
             )
             .font(.custom("OpenSans-Regular", size: isPad ? 18 : 14))
-            .accessibilityLabel(Text("Zone de texte pour vos impressions"))
+            .accessibilityLabel("Zone de texte pour vos impressions")
+            .accessibilityHint("Tapez pour écrire un commentaire")
             .padding(.vertical)
     }
 

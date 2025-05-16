@@ -45,6 +45,7 @@ struct CatalogView: View {
                                                 CatalogItemCard(item: item, isPad: false)
                                             }
                                             .buttonStyle(.plain)
+                                            .accessibilityLabel("Voir les détails de \(item.name)")
                                         }
                                     }
                                 }

@@ -66,6 +66,8 @@ private extension CatalogItemCard {
                 Text("4.5")
                     .textStyle(.ratingAverage(isPad: isPad, isDetail: false))
             }
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel("Note moyenne 4,5 étoiles")
         }
     }
 
@@ -83,6 +85,8 @@ private extension CatalogItemCard {
                     .opacity(0.3)
             }
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Prix actuel \(item.price) euros" + (item.isDiscounted ? ", au lieu de \(item.originalPrice) euros" : ""))
     }
 }
 
