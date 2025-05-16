@@ -33,15 +33,15 @@ struct ContentView: View {
                             Spacer()
                             Image(systemName: "arrow.left")
                                 .font(.system(size: 36))
-                                .foregroundColor(.gray.opacity(0.5))
+                                .foregroundColor(.secondary)
                             Text("Sélectionnez un article")
                                 .font(.headline)
-                                .foregroundColor(.gray.opacity(0.6))
+                                .foregroundColor(.secondary)
                             Spacer()
                         }
                     }
                     .frame(width: width * 0.4)
-                    .background(Color.white)
+                    .background(Color(.systemBackground))
                 }
             }
         } else {

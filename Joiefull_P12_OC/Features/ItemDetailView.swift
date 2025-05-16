@@ -80,6 +80,8 @@ struct ItemDetailView: View {
                 }) {
                     Image("shareIcon")
                         .resizable()
+                        .renderingMode(.template)
+                        .foregroundColor(.primary)
                         .frame(width: 16, height: 18)
                 }
             }
@@ -146,6 +148,8 @@ struct ItemDetailView: View {
                 ForEach(0..<5, id: \.self) { _ in
                     Image("emptyStar")
                         .resizable()
+                        .renderingMode(.template)
+                        .foregroundColor(.primary)
                         .frame(width: 25, height: 24)
                 }
             }

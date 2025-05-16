@@ -18,15 +18,17 @@ struct FavoriteBubble: View {
         HStack(spacing: 6) {
             Image("heartEmpty")
                 .resizable()
+                .renderingMode(.template)
+                .foregroundColor(.primary)
                 .frame(width: size.width, height: size.height)
 
             Text("\(count)")
                 .textStyle(.favoriteCount(isPad: isPad, isDetail: isDetail))
-                .foregroundColor(.black)
+                .foregroundColor(.primary)
         }
         .padding(.vertical, 4)
         .padding(.horizontal, 8)
-        .background(Color.white)
+        .background(Color(.systemBackground))
         .cornerRadius(30)
         .padding(10)
     }

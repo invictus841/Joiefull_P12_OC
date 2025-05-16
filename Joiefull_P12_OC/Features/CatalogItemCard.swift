@@ -114,5 +114,5 @@ private extension CatalogItemCard {
                 .padding()
         }
     }
-    .background(Color.white)
+    .background(Color(.systemBackground))
 }

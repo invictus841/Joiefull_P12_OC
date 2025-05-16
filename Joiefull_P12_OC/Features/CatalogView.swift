@@ -56,7 +56,7 @@ struct CatalogView: View {
             }
             .padding(.top)
         }
-        .background(Color.white.ignoresSafeArea())
+        .background(Color(.systemBackground).ignoresSafeArea())
         .task {
             await viewModel.loadItems()
         }
