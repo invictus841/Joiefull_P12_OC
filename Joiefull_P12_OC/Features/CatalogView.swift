@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct CatalogView: View {
-    @StateObject var viewModel = CatalogViewModel()
+    @StateObject var viewModel: CatalogViewModel
     @Environment(\.horizontalSizeClass) var sizeClass
+    @Binding var selectedItem: ClothingItem?
 
     var isPad: Bool { sizeClass == .regular }
 
@@ -32,10 +33,19 @@ struct CatalogView: View {
                             ScrollView(.horizontal, showsIndicators: false) {
                                 LazyHStack(spacing: 16) {
                                     ForEach(items) { item in
-                                        NavigationLink(destination: ItemDetailView(item: item, isPad: isPad)) {
-                                            CatalogItemCard(item: item, isPad: isPad)
+                                        if isPad {
+                                            Button {
+                                                selectedItem = item
+                                            } label: {
+                                                CatalogItemCard(item: item, isPad: true)
+                                            }
+                                            .buttonStyle(.plain)
+                                        } else {
+                                            NavigationLink(destination: ItemDetailView(item: item)) {
+                                                CatalogItemCard(item: item, isPad: false)
+                                            }
+                                            .buttonStyle(.plain)
                                         }
-                                        .buttonStyle(.plain)
                                     }
                                 }
                                 .padding(.horizontal)
@@ -53,9 +63,8 @@ struct CatalogView: View {
     }
 }
 
-
 #Preview {
     NavigationStack {
-        CatalogView()
+        CatalogView(viewModel: CatalogViewModel(), selectedItem: .constant(ClothingItem.sample))
     }
 }
