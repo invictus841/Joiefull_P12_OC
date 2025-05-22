@@ -27,7 +27,7 @@ struct ContentView: View {
 
                     VStack {
                         if let item = selectedItem {
-                            ItemDetailView(item: item)
+                            ItemDetailView(viewModel: viewModel, item: item)
                                 .frame(width: 451)
                         } else {
                             Spacer()
