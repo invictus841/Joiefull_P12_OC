@@ -11,15 +11,16 @@ struct FavoriteBubble: View {
     let count: Int
     let isPad: Bool
     let isDetail: Bool
+    let isFavorited: Bool
 
     var body: some View {
         let size = IconSize.heart(isPad: isPad, isDetail: isDetail).size
 
         HStack(spacing: 6) {
             Image("heartEmpty")
-                .resizable()
                 .renderingMode(.template)
-                .foregroundColor(.primary)
+                .resizable()
+                .foregroundColor(isFavorited ? .red : .primary)
                 .frame(width: size.width, height: size.height)
 
             Text("\(count)")
@@ -34,6 +35,7 @@ struct FavoriteBubble: View {
     }
 }
 
+
 #Preview {
-    FavoriteBubble(count: 23, isPad: false, isDetail: false)
+    FavoriteBubble(count: 23, isPad: false, isDetail: false, isFavorited: true)
 }
