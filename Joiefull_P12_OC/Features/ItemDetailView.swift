@@ -15,7 +15,7 @@ struct ItemDetailView: View {
     let item: ClothingItem
 
     @State private var userComment: String = ""
-//    @State private var isFavorited: Bool = false
+    
     private var isFavorited: Bool {
         viewModel.isFavorite(item.id)
     }
@@ -45,9 +45,6 @@ struct ItemDetailView: View {
             .frame(maxWidth: .infinity, alignment: .center)
         }
         .navigationBarBackButtonHidden()
-//        .onAppear {
-//            isFavorited = viewModel.isFavorite(item.id)
-//        }
     }
 
 
@@ -88,7 +85,7 @@ struct ItemDetailView: View {
                 Spacer()
 
                 Button(action: {
-                    shareItem()
+                    SharingService.share(item: item, userComment: userComment)
                 }) {
                     Image("shareIcon")
                         .resizable()
@@ -194,23 +191,6 @@ struct ItemDetailView: View {
             .accessibilityLabel("Zone de texte pour vos impressions")
             .accessibilityHint("Tapez pour écrire un commentaire")
             .padding(.vertical)
-    }
-
-    private func shareItem() {
-        let text = "\(item.name) – \(String(format: "%.2f €", item.price))\nDécouvrez cette pièce sur l’app Joiefull!"
-        let url = item.picture.url
-        let activityVC = UIActivityViewController(activityItems: [text, url], applicationActivities: nil)
-
-        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let rootVC = scene.windows.first?.rootViewController {
-
-            if let popover = activityVC.popoverPresentationController {
-                popover.sourceView = rootVC.view
-                popover.sourceRect = CGRect(x: rootVC.view.bounds.midX, y: 100, width: 0, height: 0)
-                popover.permittedArrowDirections = .up
-            }
-            rootVC.present(activityVC, animated: true)
-        }
     }
 }
 
