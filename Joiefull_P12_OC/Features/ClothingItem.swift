@@ -62,23 +62,3 @@ enum ClothingCategory: String, CaseIterable, Codable {
     }
 }
 
-
-@MainActor
-final class CatalogViewModel: ObservableObject {
-    @Published var items: [ClothingItem] = []
-    @Published var isLoading = false
-    @Published var error: String?
-
-    func loadItems() async {
-        isLoading = true
-        do {
-            let data = try await APIService.shared.fetchClothingItems()
-            self.items = data
-            self.error = nil
-        } catch {
-            self.error = error.localizedDescription
-        }
-        isLoading = false
-    }
-}
-

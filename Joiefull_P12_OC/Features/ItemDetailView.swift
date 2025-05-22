@@ -11,13 +11,20 @@ struct ItemDetailView: View {
     @Environment(\.horizontalSizeClass) private var sizeClass
     @Environment(\.presentationMode) var presentationMode
 
+    @ObservedObject var viewModel: CatalogViewModel
     let item: ClothingItem
+
     @State private var userComment: String = ""
+//    @State private var isFavorited: Bool = false
+    private var isFavorited: Bool {
+        viewModel.isFavorite(item.id)
+    }
+
 
     var isPad: Bool {
         sizeClass == .regular
     }
-
+    
     var imageSize: CGSize {
         isPad ? CGSize(width: 451, height: 408) : CGSize(width: 328, height: 431)
     }
@@ -38,7 +45,11 @@ struct ItemDetailView: View {
             .frame(maxWidth: .infinity, alignment: .center)
         }
         .navigationBarBackButtonHidden()
+//        .onAppear {
+//            isFavorited = viewModel.isFavorite(item.id)
+//        }
     }
+
 
     private var imageSection: some View {
         ZStack(alignment: .top) {
@@ -91,7 +102,16 @@ struct ItemDetailView: View {
                 Spacer()
                 HStack {
                     Spacer()
-                    FavoriteBubble(count: item.likes, isPad: isPad, isDetail: true)
+                    FavoriteBubble(
+                        count: item.likes + (isFavorited ? 1 : 0),
+                        isPad: isPad,
+                        isDetail: true,
+                        isFavorited: isFavorited
+                    )
+                    .onTapGesture {
+                        viewModel.toggleFavorite(for: item.id)
+                    }
+                    .accessibilityLabel(isFavorited ? "Retirer des favoris" : "Ajouter aux favoris")
                 }
             }
         }
@@ -197,6 +217,6 @@ struct ItemDetailView: View {
 
 #Preview {
     VStack {
-        ItemDetailView(item: .sample)
+        ItemDetailView(viewModel: CatalogViewModel(), item: .sample)
     }
 }

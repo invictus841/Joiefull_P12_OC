@@ -11,15 +11,15 @@ struct CatalogView: View {
     @StateObject var viewModel: CatalogViewModel
     @Environment(\.horizontalSizeClass) var sizeClass
     @Binding var selectedItem: ClothingItem?
-
+    
     var isPad: Bool { sizeClass == .regular }
-
+    
     var groupedItems: [ClothingCategory: [ClothingItem]] {
         Dictionary(grouping: viewModel.items) { $0.category }
     }
-
+    
     let sectionOrder: [ClothingCategory] = [.tops, .bottoms, .shoes, .accessories]
-
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 32) {
@@ -29,7 +29,7 @@ struct CatalogView: View {
                             Text(category.displayName)
                                 .textStyle(.sectionTitle)
                                 .padding(.horizontal)
-
+                            
                             ScrollView(.horizontal, showsIndicators: false) {
                                 LazyHStack(spacing: 16) {
                                     ForEach(items) { item in
@@ -37,12 +37,20 @@ struct CatalogView: View {
                                             Button {
                                                 selectedItem = item
                                             } label: {
-                                                CatalogItemCard(item: item, isPad: true)
+                                                CatalogItemCard(
+                                                    item: item,
+                                                    isPad: true,
+                                                    isFavorited: viewModel.isFavorite(item.id)
+                                                )
                                             }
                                             .buttonStyle(.plain)
                                         } else {
-                                            NavigationLink(destination: ItemDetailView(item: item)) {
-                                                CatalogItemCard(item: item, isPad: false)
+                                            NavigationLink(destination: ItemDetailView(viewModel: viewModel, item: item)) {
+                                                CatalogItemCard(
+                                                    item: item,
+                                                    isPad: false,
+                                                    isFavorited: viewModel.isFavorite(item.id)
+                                                )
                                             }
                                             .buttonStyle(.plain)
                                             .accessibilityLabel("Voir les détails de \(item.name)")

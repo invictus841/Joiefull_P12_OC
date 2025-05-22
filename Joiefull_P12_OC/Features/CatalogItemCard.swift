@@ -10,6 +10,7 @@ import SwiftUI
 struct CatalogItemCard: View {
     let item: ClothingItem
     let isPad: Bool
+    let isFavorited: Bool
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -46,7 +47,7 @@ private extension CatalogItemCard {
                 }
             }
 
-            FavoriteBubble(count: item.likes, isPad: isPad, isDetail: false)
+            FavoriteBubble(count: item.likes + (isFavorited ? 1 : 0), isPad: isPad, isDetail: false, isFavorited: isFavorited)
         }
     }
 
@@ -107,14 +108,14 @@ private extension CatalogItemCard {
         VStack {
             Text("iPhone")
                 .textStyle(.sectionTitle)
-            CatalogItemCard(item: .sample, isPad: false)
+            CatalogItemCard(item: .sample, isPad: false, isFavorited: true)
                 .padding()
         }
         
         VStack {
             Text("iPad")
                 .textStyle(.sectionTitle)
-            CatalogItemCard(item: .sample, isPad: true)
+            CatalogItemCard(item: .sample, isPad: true, isFavorited: true)
                 .padding()
         }
     }
