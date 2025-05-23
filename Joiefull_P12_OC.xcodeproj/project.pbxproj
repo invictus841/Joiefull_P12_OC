@@ -21,8 +21,22 @@
 		ACDB2F902DCDF08500AE0FDA /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDB2F8F2DCDF08500AE0FDA /* Components.swift */; };
 		ACDF2AF82DDF45E50091D9B3 /* SharingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDF2AF72DDF45E50091D9B3 /* SharingService.swift */; };
 		ACDF2AFA2DDF4B1F0091D9B3 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDF2AF92DDF4B1F0091D9B3 /* DataService.swift */; };
+		ACDF2B0A2DE043E60091D9B3 /* Joiefull_P12_OCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDF2B082DE043E60091D9B3 /* Joiefull_P12_OCTests.swift */; };
+		ACDF2B0C2DE044290091D9B3 /* CatalogViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDF2B0B2DE044290091D9B3 /* CatalogViewModelTests.swift */; };
+		ACDF2B0E2DE044380091D9B3 /* MockDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDF2B0D2DE044380091D9B3 /* MockDataService.swift */; };
+		ACDF2B102DE0485E0091D9B3 /* MockAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDF2B0F2DE0485E0091D9B3 /* MockAPIService.swift */; };
 		ACE35FD02DD73011004D5D72 /* CatalogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE35FCF2DD73011004D5D72 /* CatalogViewModel.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		ACDF2B032DE043DF0091D9B3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ACDB2F5A2DCCF7CD00AE0FDA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ACDB2F612DCCF7CD00AE0FDA;
+			remoteInfo = Joiefull_P12_OC;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		ACDB2F622DCCF7CD00AE0FDA /* Joiefull_P12_OC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Joiefull_P12_OC.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,11 +55,23 @@
 		ACDB2F8F2DCDF08500AE0FDA /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		ACDF2AF72DDF45E50091D9B3 /* SharingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingService.swift; sourceTree = "<group>"; };
 		ACDF2AF92DDF4B1F0091D9B3 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		ACDF2AFF2DE043DF0091D9B3 /* Joiefull_P12_OCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Joiefull_P12_OCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACDF2B082DE043E60091D9B3 /* Joiefull_P12_OCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joiefull_P12_OCTests.swift; sourceTree = "<group>"; };
+		ACDF2B0B2DE044290091D9B3 /* CatalogViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewModelTests.swift; sourceTree = "<group>"; };
+		ACDF2B0D2DE044380091D9B3 /* MockDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataService.swift; sourceTree = "<group>"; };
+		ACDF2B0F2DE0485E0091D9B3 /* MockAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIService.swift; sourceTree = "<group>"; };
 		ACE35FCF2DD73011004D5D72 /* CatalogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		ACDB2F5F2DCCF7CD00AE0FDA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACDF2AFC2DE043DF0091D9B3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -59,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				ACDB2F732DCCF7D300AE0FDA /* Joiefull_P12_OC */,
+				ACDF2B092DE043E60091D9B3 /* Joiefull_P12_OCTests */,
 				ACDB2F632DCCF7CD00AE0FDA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -67,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				ACDB2F622DCCF7CD00AE0FDA /* Joiefull_P12_OC.app */,
+				ACDF2AFF2DE043DF0091D9B3 /* Joiefull_P12_OCTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -134,6 +162,17 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		ACDF2B092DE043E60091D9B3 /* Joiefull_P12_OCTests */ = {
+			isa = PBXGroup;
+			children = (
+				ACDF2B0F2DE0485E0091D9B3 /* MockAPIService.swift */,
+				ACDF2B0D2DE044380091D9B3 /* MockDataService.swift */,
+				ACDF2B0B2DE044290091D9B3 /* CatalogViewModelTests.swift */,
+				ACDF2B082DE043E60091D9B3 /* Joiefull_P12_OCTests.swift */,
+			);
+			path = Joiefull_P12_OCTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -156,6 +195,26 @@
 			productReference = ACDB2F622DCCF7CD00AE0FDA /* Joiefull_P12_OC.app */;
 			productType = "com.apple.product-type.application";
 		};
+		ACDF2AFE2DE043DF0091D9B3 /* Joiefull_P12_OCTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ACDF2B052DE043DF0091D9B3 /* Build configuration list for PBXNativeTarget "Joiefull_P12_OCTests" */;
+			buildPhases = (
+				ACDF2AFB2DE043DF0091D9B3 /* Sources */,
+				ACDF2AFC2DE043DF0091D9B3 /* Frameworks */,
+				ACDF2AFD2DE043DF0091D9B3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ACDF2B042DE043DF0091D9B3 /* PBXTargetDependency */,
+			);
+			name = Joiefull_P12_OCTests;
+			packageProductDependencies = (
+			);
+			productName = Joiefull_P12_OCTests;
+			productReference = ACDF2AFF2DE043DF0091D9B3 /* Joiefull_P12_OCTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -168,6 +227,10 @@
 				TargetAttributes = {
 					ACDB2F612DCCF7CD00AE0FDA = {
 						CreatedOnToolsVersion = 16.3;
+					};
+					ACDF2AFE2DE043DF0091D9B3 = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = ACDB2F612DCCF7CD00AE0FDA;
 					};
 				};
 			};
@@ -186,6 +249,7 @@
 			projectRoot = "";
 			targets = (
 				ACDB2F612DCCF7CD00AE0FDA /* Joiefull_P12_OC */,
+				ACDF2AFE2DE043DF0091D9B3 /* Joiefull_P12_OCTests */,
 			);
 		};
 /* End PBXProject section */
@@ -198,6 +262,13 @@
 				ACDB2F7C2DCD012F00AE0FDA /* OpenSans-SemiBold.ttf in Resources */,
 				ACDB2F7E2DCD013D00AE0FDA /* OpenSans-Regular.ttf in Resources */,
 				ACDB2F742DCCF7D300AE0FDA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACDF2AFD2DE043DF0091D9B3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,7 +294,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ACDF2AFB2DE043DF0091D9B3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACDF2B102DE0485E0091D9B3 /* MockAPIService.swift in Sources */,
+				ACDF2B0C2DE044290091D9B3 /* CatalogViewModelTests.swift in Sources */,
+				ACDF2B0A2DE043E60091D9B3 /* Joiefull_P12_OCTests.swift in Sources */,
+				ACDF2B0E2DE044380091D9B3 /* MockDataService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		ACDF2B042DE043DF0091D9B3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ACDB2F612DCCF7CD00AE0FDA /* Joiefull_P12_OC */;
+			targetProxy = ACDF2B032DE043DF0091D9B3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		ACDB2F6B2DCCF7CE00AE0FDA /* Debug */ = {
@@ -409,6 +499,42 @@
 			};
 			name = Release;
 		};
+		ACDF2B062DE043DF0091D9B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NJWKSQXR8C;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Alexandre-Narek.Joiefull-P12-OCTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Joiefull_P12_OC.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Joiefull_P12_OC";
+			};
+			name = Debug;
+		};
+		ACDF2B072DE043DF0091D9B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NJWKSQXR8C;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Alexandre-Narek.Joiefull-P12-OCTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Joiefull_P12_OC.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Joiefull_P12_OC";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -426,6 +552,15 @@
 			buildConfigurations = (
 				ACDB2F6E2DCCF7CE00AE0FDA /* Debug */,
 				ACDB2F6F2DCCF7CE00AE0FDA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ACDF2B052DE043DF0091D9B3 /* Build configuration list for PBXNativeTarget "Joiefull_P12_OCTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ACDF2B062DE043DF0091D9B3 /* Debug */,
+				ACDF2B072DE043DF0091D9B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
