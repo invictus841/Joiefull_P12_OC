@@ -77,7 +77,9 @@ struct ItemDetailView: View {
                         presentationMode.wrappedValue.dismiss()
                     }) {
                         Image("backSymbol")
+                            .renderingMode(.template)
                             .resizable()
+                            .foregroundColor(.primary)
                             .frame(width: 16, height: 16)
                     }
                     .accessibilityLabel("Retour à la liste")
@@ -89,7 +91,9 @@ struct ItemDetailView: View {
                     SharingService.share(item: item, userComment: userComment)
                 }) {
                     Image("shareIcon")
+                        .renderingMode(.template)
                         .resizable()
+                        .foregroundColor(.primary)
                         .frame(width: 16, height: 18)
                 }
                 .accessibilityLabel("Partager cet article")
