@@ -13,17 +13,31 @@ final class CatalogViewModelTests: XCTestCase {
 
     var mockDataService: MockDataService!
     var mockAPIService: MockAPIService!
-    var viewModel: CatalogViewModel!
+    var sut: CatalogViewModel!
 
     override func setUp() {
         mockDataService = MockDataService()
         mockAPIService = MockAPIService()
-        viewModel = CatalogViewModel(
+        sut = CatalogViewModel(
             dataService: mockDataService,
             apiService: mockAPIService
         )
     }
 
+    func test_init_startsWithEmptyState() {
+        // Given & When
+        let viewModel = CatalogViewModel(
+            dataService: mockDataService,
+            apiService: mockAPIService
+        )
+
+        // Then
+        XCTAssertTrue(viewModel.items.isEmpty)
+        XCTAssertNil(viewModel.error)
+        XCTAssertFalse(viewModel.isLoading)
+        XCTAssertEqual(viewModel.favoriteItemIDs, [])
+    }
+    
     // MARK: - Favorites
 
     func test_givenFavoriteList_whenInit_thenFavoritesAreLoaded() {
@@ -42,16 +56,16 @@ final class CatalogViewModelTests: XCTestCase {
         let itemID = 42
 
         // When
-        viewModel.toggleFavorite(for: itemID)
+        sut.toggleFavorite(for: itemID)
 
         // Then
-        XCTAssertTrue(viewModel.isFavorite(itemID))
+        XCTAssertTrue(sut.isFavorite(itemID))
 
         // When
-        viewModel.toggleFavorite(for: itemID)
+        sut.toggleFavorite(for: itemID)
 
         // Then
-        XCTAssertFalse(viewModel.isFavorite(itemID))
+        XCTAssertFalse(sut.isFavorite(itemID))
     }
 
     // MARK: - Ratings
@@ -62,11 +76,11 @@ final class CatalogViewModelTests: XCTestCase {
         mockDataService.userRatings = [itemID: 4]
 
         // When
-        viewModel.loadRatings(for: itemID)
+        sut.loadRatings(for: itemID)
 
         // Then
-        XCTAssertEqual(viewModel.selectedItemRating, 4)
-        XCTAssertEqual(viewModel.selectedItemAverage, 3.5)
+        XCTAssertEqual(sut.selectedItemRating, 4)
+        XCTAssertEqual(sut.selectedItemAverage, 3.5)
     }
 
     func test_givenNewRating_whenUpdated_thenValueIsStoredAndAverageUpdated() {
@@ -74,11 +88,11 @@ final class CatalogViewModelTests: XCTestCase {
         let itemID = 10
 
         // When
-        viewModel.updateRating(for: itemID, rating: 5)
+        sut.updateRating(for: itemID, rating: 5)
 
         // Then
-        XCTAssertEqual(viewModel.selectedItemRating, 5)
-        XCTAssertEqual(viewModel.selectedItemAverage, 4.0)
+        XCTAssertEqual(sut.selectedItemRating, 5)
+        XCTAssertEqual(sut.selectedItemAverage, 4.0)
         XCTAssertEqual(mockDataService.userRatings[itemID], 5)
     }
 
@@ -89,11 +103,11 @@ final class CatalogViewModelTests: XCTestCase {
         mockAPIService.result = .success([.sample])
 
         // When
-        await viewModel.loadItems()
+        await sut.loadItems()
 
         // Then
-        XCTAssertEqual(viewModel.items.count, 1)
-        XCTAssertNil(viewModel.error)
+        XCTAssertEqual(sut.items.count, 1)
+        XCTAssertNil(sut.error)
     }
 
     func test_givenFailingAPI_whenLoadingItems_thenErrorIsSet() async {
@@ -101,11 +115,11 @@ final class CatalogViewModelTests: XCTestCase {
         mockAPIService.result = .failure(NSError(domain: "", code: 1))
 
         // When
-        await viewModel.loadItems()
+        await sut.loadItems()
 
         // Then
-        XCTAssertTrue(viewModel.items.isEmpty)
-        XCTAssertNotNil(viewModel.error)
+        XCTAssertTrue(sut.items.isEmpty)
+        XCTAssertNotNil(sut.error)
     }
 }
 
