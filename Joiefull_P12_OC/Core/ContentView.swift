@@ -31,14 +31,23 @@ struct ContentView: View {
                                 .frame(width: 451)
                                 .id(item.id)
                         } else {
-                            Spacer()
-                            Image(systemName: "arrow.left")
-                                .font(.system(size: 36))
-                                .foregroundColor(.secondary)
-                            Text("Sélectionnez un article")
-                                .font(.headline)
-                                .foregroundColor(.secondary)
-                            Spacer()
+                            VStack {
+                                Spacer()
+
+                                VStack(spacing: 8) {
+                                    Image(systemName: "arrow.left")
+                                        .font(.system(size: 36))
+                                        .foregroundColor(.secondary)
+
+                                    Text("Sélectionnez un article")
+                                        .font(.headline)
+                                        .foregroundColor(.secondary)
+                                }
+                                .accessibilityElement(children: .combine)
+                                .accessibilityLabel("Sélectionnez un article dans la liste à gauche")
+
+                                Spacer()
+                            }
                         }
                     }
                     .frame(width: width * 0.4)
