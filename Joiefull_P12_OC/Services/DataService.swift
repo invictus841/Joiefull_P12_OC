@@ -19,7 +19,6 @@ protocol DataServiceProtocol {
 
 // MARK: - DataService
 final class DataService: DataServiceProtocol {
-    static let shared: DataServiceProtocol = DataService()
 
     private let favoritesKey = "favoriteItemIDs"
     private let ratingPrefix = "userRating_"

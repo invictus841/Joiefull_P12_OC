@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.horizontalSizeClass) var sizeClass
-    @StateObject private var viewModel = CatalogViewModel()
+    @StateObject var viewModel: CatalogViewModel
     @State private var selectedItem: ClothingItem?
 
     var isPad: Bool { sizeClass == .regular }
@@ -56,5 +56,5 @@ struct ContentView: View {
 
 
 #Preview {
-    ContentView()
+    ContentView(viewModel: CatalogViewModel(dataService: DataService()))
 }

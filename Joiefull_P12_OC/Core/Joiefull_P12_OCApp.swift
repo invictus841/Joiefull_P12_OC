@@ -11,7 +11,10 @@ import SwiftUI
 struct Joiefull_P12_OCApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            let dataService = DataService()
+            let viewModel = CatalogViewModel(dataService: dataService)
+
+            ContentView(viewModel: viewModel)
         }
     }
 }

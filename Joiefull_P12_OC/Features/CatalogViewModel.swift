@@ -20,7 +20,7 @@ final class CatalogViewModel: ObservableObject {
     
     private let dataService: DataServiceProtocol
 
-    init(dataService: DataServiceProtocol = DataService.shared) {
+    init(dataService: DataServiceProtocol) {
         self.dataService = dataService
         self.favoriteItemIDs = dataService.loadFavorites()
     }
@@ -32,7 +32,6 @@ final class CatalogViewModel: ObservableObject {
             self.items = data
             self.error = nil
 
-            // Preload average ratings for catalog display
             var newRatings: [Int: Double] = [:]
             for item in data {
                 newRatings[item.id] = dataService.getAverageRating(for: item.id)
@@ -70,7 +69,6 @@ final class CatalogViewModel: ObservableObject {
         selectedItemRating = rating
         selectedItemAverage = dataService.getAverageRating(for: itemID)
         
-        // Update catalog display rating
         averageRatings[itemID] = selectedItemAverage
     }
 }

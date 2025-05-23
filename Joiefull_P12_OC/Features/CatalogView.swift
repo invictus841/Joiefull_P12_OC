@@ -77,6 +77,6 @@ struct CatalogView: View {
 
 #Preview {
     NavigationStack {
-        CatalogView(viewModel: CatalogViewModel(), selectedItem: .constant(ClothingItem.sample))
+        CatalogView(viewModel: CatalogViewModel(dataService: DataService()), selectedItem: .constant(ClothingItem.sample))
     }
 }

@@ -14,8 +14,6 @@ struct ItemDetailView: View {
     @ObservedObject var viewModel: CatalogViewModel
     let item: ClothingItem
     
-    private let dataService: DataServiceProtocol = DataService.shared
-    
     @State private var userComment: String = ""
     
     private var isFavorited: Bool {
@@ -212,6 +210,6 @@ struct ItemDetailView: View {
 
 #Preview {
     VStack {
-        ItemDetailView(viewModel: CatalogViewModel(), item: .sample)
+        ItemDetailView(viewModel: CatalogViewModel(dataService: DataService()), item: .sample)
     }
 }
