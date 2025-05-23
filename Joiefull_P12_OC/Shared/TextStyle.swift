@@ -19,35 +19,23 @@ enum TextStyle {
     var font: Font {
         switch self {
         case .sectionTitle:
-            return .custom("OpenSans-SemiBold", size: 22)
+            return .custom("OpenSans-SemiBold", size: 22, relativeTo: .title2)
 
         case .itemName(let isPad, let isDetail):
-            if isDetail {
-                return .custom("OpenSans-SemiBold", size: isPad ? 22 : 18)
-            } else {
-                return .custom("OpenSans-SemiBold", size: isPad ? 18 : 14)
-            }
+            let size = isDetail ? (isPad ? 22 : 18) : (isPad ? 18 : 14)
+            return .custom("OpenSans-SemiBold", size: CGFloat(size), relativeTo: .body)
 
-        case .itemPrice(let isPad, let isDetail):
-            return .custom("OpenSans-Regular", size: isPad
-                ? (isDetail ? 22 : 18)
-                : (isDetail ? 18 : 14)
-            )
-
-        case .ratingAverage(let isPad, let isDetail):
-            return .custom("OpenSans-Regular", size: isPad
-                ? (isDetail ? 22 : 18)
-                : (isDetail ? 18 : 14)
-            )
+        case .itemPrice(let isPad, let isDetail),
+             .ratingAverage(let isPad, let isDetail):
+            let size = isDetail ? (isPad ? 22 : 18) : (isPad ? 18 : 14)
+            return .custom("OpenSans-Regular", size: CGFloat(size), relativeTo: .body)
 
         case .favoriteCount(let isPad, let isDetail):
-            return .custom("OpenSans-SemiBold", size: isPad
-                ? (isDetail ? 22 : 14)
-                : (isDetail ? 18 : 14)
-            )
+            let size = isDetail ? (isPad ? 22 : 18) : (isPad ? 14 : 14)
+            return .custom("OpenSans-SemiBold", size: CGFloat(size), relativeTo: .caption)
 
         case .description(let isPad):
-            return .custom("OpenSans-Regular", size: isPad ? 18 : 14)
+            return .custom("OpenSans-Regular", size: isPad ? 18 : 14, relativeTo: .body)
         }
     }
 }
@@ -57,6 +45,7 @@ extension Text {
         self.font(style.font)
     }
 }
+
 
 enum IconSize {
     case heart(isPad: Bool, isDetail: Bool)
