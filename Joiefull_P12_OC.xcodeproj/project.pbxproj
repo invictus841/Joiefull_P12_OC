@@ -165,12 +165,20 @@
 		ACDF2B092DE043E60091D9B3 /* Joiefull_P12_OCTests */ = {
 			isa = PBXGroup;
 			children = (
-				ACDF2B0F2DE0485E0091D9B3 /* MockAPIService.swift */,
-				ACDF2B0D2DE044380091D9B3 /* MockDataService.swift */,
+				ACDF2B132DE04B7F0091D9B3 /* MockServices */,
 				ACDF2B0B2DE044290091D9B3 /* CatalogViewModelTests.swift */,
 				ACDF2B082DE043E60091D9B3 /* Joiefull_P12_OCTests.swift */,
 			);
 			path = Joiefull_P12_OCTests;
+			sourceTree = "<group>";
+		};
+		ACDF2B132DE04B7F0091D9B3 /* MockServices */ = {
+			isa = PBXGroup;
+			children = (
+				ACDF2B0F2DE0485E0091D9B3 /* MockAPIService.swift */,
+				ACDF2B0D2DE044380091D9B3 /* MockDataService.swift */,
+			);
+			path = MockServices;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
