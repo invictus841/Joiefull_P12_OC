@@ -13,13 +13,14 @@ struct ItemDetailView: View {
 
     @ObservedObject var viewModel: CatalogViewModel
     let item: ClothingItem
-
+    
+    private let dataService: DataServiceProtocol = DataService.shared
+    
     @State private var userComment: String = ""
     
     private var isFavorited: Bool {
         viewModel.isFavorite(item.id)
     }
-
 
     var isPad: Bool {
         sizeClass == .regular
@@ -44,9 +45,11 @@ struct ItemDetailView: View {
             .padding()
             .frame(maxWidth: .infinity, alignment: .center)
         }
+        .onAppear {
+            viewModel.loadRatings(for: item.id)
+        }
         .navigationBarBackButtonHidden()
     }
-
 
     private var imageSection: some View {
         ZStack(alignment: .top) {
@@ -125,11 +128,12 @@ struct ItemDetailView: View {
                 Image("filledStar")
                     .resizable()
                     .frame(width: 14, height: 14)
-                Text("4.5")
+                
+                Text(String(format: "%.1f", viewModel.selectedItemAverage))
                     .textStyle(.ratingAverage(isPad: isPad, isDetail: true))
             }
             .accessibilityElement(children: .combine)
-            .accessibilityLabel("Note moyenne 4,5 étoiles")
+            .accessibilityLabel("Note moyenne \(viewModel.selectedItemAverage) étoiles")
         }
     }
 
@@ -156,20 +160,31 @@ struct ItemDetailView: View {
     }
 
     private var ratingSection: some View {
-        HStack(spacing: 14) {
-            Image("userPic")
-                .resizable()
-                .scaledToFill()
-                .frame(width: 39, height: 39)
-                .clipShape(Circle())
-
+        VStack(alignment: .leading, spacing: 8) {
             HStack(spacing: 14) {
-                ForEach(0..<5, id: \.self) { _ in
-                    Image("emptyStar")
-                        .resizable()
-                        .renderingMode(.template)
-                        .foregroundColor(.primary)
-                        .frame(width: 25, height: 24)
+                Image("userPic")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 39, height: 39)
+                    .clipShape(Circle())
+
+                HStack(spacing: 14) {
+                    ForEach(1...5, id: \.self) { star in
+                        Image(star <= (viewModel.selectedItemRating ?? 0) ? "filledStar" : "emptyStar")
+                            .resizable()
+                            .renderingMode(.template)
+                            .foregroundColor(.orange)
+                            .frame(width: 25, height: 24)
+                            .onTapGesture {
+                                if viewModel.selectedItemRating == star {
+                                    viewModel.selectedItemRating = nil
+                                } else {
+                                    viewModel.updateRating(for: item.id, rating: star)
+                                }
+                            }
+                            .accessibilityLabel("\(star) étoile\(star > 1 ? "s" : "")")
+                            .accessibilityAddTraits(star == viewModel.selectedItemRating ? .isSelected : .isButton)
+                    }
                 }
             }
         }

@@ -39,8 +39,9 @@ struct CatalogView: View {
                                             } label: {
                                                 CatalogItemCard(
                                                     item: item,
-                                                    isPad: true,
-                                                    isFavorited: viewModel.isFavorite(item.id)
+                                                    isPad: isPad,
+                                                    isFavorited: viewModel.isFavorite(item.id),
+                                                    averageRating: viewModel.averageRatings[item.id] ?? 3.0
                                                 )
                                             }
                                             .buttonStyle(.plain)
@@ -48,8 +49,9 @@ struct CatalogView: View {
                                             NavigationLink(destination: ItemDetailView(viewModel: viewModel, item: item)) {
                                                 CatalogItemCard(
                                                     item: item,
-                                                    isPad: false,
-                                                    isFavorited: viewModel.isFavorite(item.id)
+                                                    isPad: isPad,
+                                                    isFavorited: viewModel.isFavorite(item.id),
+                                                    averageRating: viewModel.averageRatings[item.id] ?? 3.0
                                                 )
                                             }
                                             .buttonStyle(.plain)
@@ -71,6 +73,7 @@ struct CatalogView: View {
         }
     }
 }
+
 
 #Preview {
     NavigationStack {

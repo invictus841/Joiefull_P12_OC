@@ -11,7 +11,8 @@ struct CatalogItemCard: View {
     let item: ClothingItem
     let isPad: Bool
     let isFavorited: Bool
-
+    let averageRating: Double
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             imageSection
@@ -64,11 +65,12 @@ private extension CatalogItemCard {
                 Image("filledStar")
                     .resizable()
                     .frame(width: 14, height: 14)
-                Text("4.5")
+                
+                Text(String(format: "%.1f", averageRating))
                     .textStyle(.ratingAverage(isPad: isPad, isDetail: false))
             }
             .accessibilityElement(children: .combine)
-            .accessibilityLabel("Note moyenne 4,5 étoiles")
+            .accessibilityLabel("Note moyenne \(averageRating) étoiles")
         }
     }
 
@@ -108,14 +110,14 @@ private extension CatalogItemCard {
         VStack {
             Text("iPhone")
                 .textStyle(.sectionTitle)
-            CatalogItemCard(item: .sample, isPad: false, isFavorited: true)
+            CatalogItemCard(item: .sample, isPad: false, isFavorited: true, averageRating: 4.5)
                 .padding()
         }
         
         VStack {
             Text("iPad")
                 .textStyle(.sectionTitle)
-            CatalogItemCard(item: .sample, isPad: true, isFavorited: true)
+            CatalogItemCard(item: .sample, isPad: true, isFavorited: true, averageRating: 4.2)
                 .padding()
         }
     }

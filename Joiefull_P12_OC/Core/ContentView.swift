@@ -29,6 +29,7 @@ struct ContentView: View {
                         if let item = selectedItem {
                             ItemDetailView(viewModel: viewModel, item: item)
                                 .frame(width: 451)
+                                .id(item.id)
                         } else {
                             Spacer()
                             Image(systemName: "arrow.left")

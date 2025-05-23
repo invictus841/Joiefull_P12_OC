@@ -13,13 +13,16 @@ final class CatalogViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var error: String?
     @Published var favoriteItemIDs: [Int] = []
+    @Published var averageRatings: [Int: Double] = [:]
 
-    private let favoritesKey = "favoriteItemIDs"
+    @Published var selectedItemRating: Int? = nil
+    @Published var selectedItemAverage: Double = 3.0
+    
+    private let dataService: DataServiceProtocol
 
-    init() {
-        if let saved = UserDefaults.standard.array(forKey: favoritesKey) as? [Int] {
-            self.favoriteItemIDs = saved
-        }
+    init(dataService: DataServiceProtocol = DataService.shared) {
+        self.dataService = dataService
+        self.favoriteItemIDs = dataService.loadFavorites()
     }
 
     func loadItems() async {
@@ -28,12 +31,21 @@ final class CatalogViewModel: ObservableObject {
             let data = try await APIService.shared.fetchClothingItems()
             self.items = data
             self.error = nil
+
+            // Preload average ratings for catalog display
+            var newRatings: [Int: Double] = [:]
+            for item in data {
+                newRatings[item.id] = dataService.getAverageRating(for: item.id)
+            }
+            self.averageRatings = newRatings
+
         } catch {
             self.error = error.localizedDescription
         }
         isLoading = false
     }
-    
+
+    // MARK: - Favorites
     func isFavorite(_ id: Int) -> Bool {
         favoriteItemIDs.contains(id)
     }
@@ -44,11 +56,22 @@ final class CatalogViewModel: ObservableObject {
         } else {
             favoriteItemIDs.append(id)
         }
-        saveFavorites()
+        dataService.saveFavorites(favoriteItemIDs)
+    }
+    
+    // MARK: - Detail View Ratings
+    func loadRatings(for itemID: Int) {
+        selectedItemRating = dataService.getUserRating(for: itemID)
+        selectedItemAverage = dataService.getAverageRating(for: itemID)
     }
 
-    private func saveFavorites() {
-        UserDefaults.standard.set(favoriteItemIDs, forKey: favoritesKey)
+    func updateRating(for itemID: Int, rating: Int) {
+        dataService.saveUserRating(for: itemID, rating: rating)
+        selectedItemRating = rating
+        selectedItemAverage = dataService.getAverageRating(for: itemID)
+        
+        // Update catalog display rating
+        averageRatings[itemID] = selectedItemAverage
     }
-
 }
+
