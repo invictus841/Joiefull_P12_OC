@@ -7,8 +7,11 @@
 
 import Foundation
 
-final class APIService {
-    static let shared = APIService()
+protocol APIServiceProtocol {
+    func fetchClothingItems() async throws -> [ClothingItem]
+}
+
+final class APIService: APIServiceProtocol {
 
     private let urlString = "https://raw.githubusercontent.com/OpenClassrooms-Student-Center/Cr-ez-une-interface-dynamique-et-accessible-avec-SwiftUI/main/api/clothes.json"
 

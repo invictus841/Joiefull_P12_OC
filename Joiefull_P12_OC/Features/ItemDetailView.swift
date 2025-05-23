@@ -210,6 +210,6 @@ struct ItemDetailView: View {
 
 #Preview {
     VStack {
-        ItemDetailView(viewModel: CatalogViewModel(dataService: DataService()), item: .sample)
+        ItemDetailView(viewModel: CatalogViewModel(dataService: DataService(), apiService: APIService()), item: .sample)
     }
 }

@@ -9,12 +9,17 @@ import SwiftUI
 
 @main
 struct Joiefull_P12_OCApp: App {
+    let dataService: DataServiceProtocol = DataService()
+    let apiService: APIServiceProtocol = APIService()
+    
     var body: some Scene {
         WindowGroup {
-            let dataService = DataService()
-            let viewModel = CatalogViewModel(dataService: dataService)
-
-            ContentView(viewModel: viewModel)
+            ContentView(
+                viewModel: CatalogViewModel(
+                    dataService: dataService,
+                    apiService: apiService
+                )
+            )
         }
     }
 }

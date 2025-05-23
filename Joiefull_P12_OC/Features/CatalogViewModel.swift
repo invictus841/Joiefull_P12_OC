@@ -18,26 +18,28 @@ final class CatalogViewModel: ObservableObject {
     @Published var selectedItemRating: Int? = nil
     @Published var selectedItemAverage: Double = 3.0
     
+    private let apiService: APIServiceProtocol
     private let dataService: DataServiceProtocol
 
-    init(dataService: DataServiceProtocol) {
-        self.dataService = dataService
-        self.favoriteItemIDs = dataService.loadFavorites()
+    init(dataService: DataServiceProtocol, apiService: APIServiceProtocol) {
+            self.dataService = dataService
+            self.apiService = apiService
+            self.favoriteItemIDs = dataService.loadFavorites()
     }
 
     func loadItems() async {
         isLoading = true
         do {
-            let data = try await APIService.shared.fetchClothingItems()
+            let data = try await apiService.fetchClothingItems()
             self.items = data
             self.error = nil
-
+            
             var newRatings: [Int: Double] = [:]
             for item in data {
                 newRatings[item.id] = dataService.getAverageRating(for: item.id)
             }
             self.averageRatings = newRatings
-
+            
         } catch {
             self.error = error.localizedDescription
         }

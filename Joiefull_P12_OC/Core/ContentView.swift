@@ -56,5 +56,5 @@ struct ContentView: View {
 
 
 #Preview {
-    ContentView(viewModel: CatalogViewModel(dataService: DataService()))
+    ContentView(viewModel: CatalogViewModel(dataService: DataService(), apiService: APIService()))
 }
