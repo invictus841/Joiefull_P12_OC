@@ -21,7 +21,6 @@
 		ACDB2F902DCDF08500AE0FDA /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDB2F8F2DCDF08500AE0FDA /* Components.swift */; };
 		ACDF2AF82DDF45E50091D9B3 /* SharingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDF2AF72DDF45E50091D9B3 /* SharingService.swift */; };
 		ACDF2AFA2DDF4B1F0091D9B3 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDF2AF92DDF4B1F0091D9B3 /* DataService.swift */; };
-		ACDF2B0A2DE043E60091D9B3 /* Joiefull_P12_OCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDF2B082DE043E60091D9B3 /* Joiefull_P12_OCTests.swift */; };
 		ACDF2B0C2DE044290091D9B3 /* CatalogViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDF2B0B2DE044290091D9B3 /* CatalogViewModelTests.swift */; };
 		ACDF2B0E2DE044380091D9B3 /* MockDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDF2B0D2DE044380091D9B3 /* MockDataService.swift */; };
 		ACDF2B102DE0485E0091D9B3 /* MockAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDF2B0F2DE0485E0091D9B3 /* MockAPIService.swift */; };
@@ -56,7 +55,6 @@
 		ACDF2AF72DDF45E50091D9B3 /* SharingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingService.swift; sourceTree = "<group>"; };
 		ACDF2AF92DDF4B1F0091D9B3 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		ACDF2AFF2DE043DF0091D9B3 /* Joiefull_P12_OCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Joiefull_P12_OCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		ACDF2B082DE043E60091D9B3 /* Joiefull_P12_OCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joiefull_P12_OCTests.swift; sourceTree = "<group>"; };
 		ACDF2B0B2DE044290091D9B3 /* CatalogViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewModelTests.swift; sourceTree = "<group>"; };
 		ACDF2B0D2DE044380091D9B3 /* MockDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataService.swift; sourceTree = "<group>"; };
 		ACDF2B0F2DE0485E0091D9B3 /* MockAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIService.swift; sourceTree = "<group>"; };
@@ -167,7 +165,6 @@
 			children = (
 				ACDF2B132DE04B7F0091D9B3 /* MockServices */,
 				ACDF2B0B2DE044290091D9B3 /* CatalogViewModelTests.swift */,
-				ACDF2B082DE043E60091D9B3 /* Joiefull_P12_OCTests.swift */,
 			);
 			path = Joiefull_P12_OCTests;
 			sourceTree = "<group>";
@@ -308,7 +305,6 @@
 			files = (
 				ACDF2B102DE0485E0091D9B3 /* MockAPIService.swift in Sources */,
 				ACDF2B0C2DE044290091D9B3 /* CatalogViewModelTests.swift in Sources */,
-				ACDF2B0A2DE043E60091D9B3 /* Joiefull_P12_OCTests.swift in Sources */,
 				ACDF2B0E2DE044380091D9B3 /* MockDataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
