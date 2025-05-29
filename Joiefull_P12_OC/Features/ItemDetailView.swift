@@ -14,8 +14,6 @@ struct ItemDetailView: View {
     @ObservedObject var viewModel: CatalogViewModel
     let item: ClothingItem
     
-    @State private var userComment: String = ""
-    
     private var isFavorited: Bool {
         viewModel.isFavorite(item.id)
     }
@@ -37,7 +35,21 @@ struct ItemDetailView: View {
                 priceSection
                 descriptionSection
                 ratingSection
-                commentSection
+                
+                if viewModel.userCommentSaved {
+                    Text("Les avis des clients:")
+                        .textStyle(.itemName(isPad: isPad, isDetail: true))
+                        .padding(.top)
+
+                    Text(viewModel.userComment)
+                        .textStyle(.description(isPad: isPad))
+                        .transition(.opacity)
+                } else {
+                    commentSection
+                        .transition(.opacity)
+                    submitCommentButton
+                        .transition(.opacity)
+                }
             }
             .frame(maxWidth: imageSize.width)
             .padding()
@@ -45,6 +57,7 @@ struct ItemDetailView: View {
         }
         .onAppear {
             viewModel.loadRatings(for: item.id)
+            viewModel.loadComment(for: item.id)
         }
         .navigationBarBackButtonHidden()
         .sheet(item: $viewModel.shareSheetData) { data in
@@ -198,11 +211,9 @@ struct ItemDetailView: View {
     }
 
     private var commentSection: some View {
-        TextField("Partagez ici vos impressions sur cette pièce", text: $userComment)
+        TextField("Partagez ici vos impressions sur cette pièce", text: $viewModel.userComment)
             .frame(height: isPad ? 69 : 53)
-            .padding(.trailing, 12)
-            .padding(.leading, 8)
-            .padding(.top, 0)
+            .padding(.horizontal, 8)
             .padding(.bottom, 18)
             .background(
                 RoundedRectangle(cornerRadius: 12)
@@ -212,6 +223,24 @@ struct ItemDetailView: View {
             .accessibilityLabel("Zone de texte pour vos impressions")
             .accessibilityHint("Tapez pour écrire un commentaire")
             .padding(.vertical)
+    }
+    
+    private var submitCommentButton: some View {
+        Button(action: {
+            withAnimation {
+                viewModel.saveComment(for: item.id)
+            }
+        }) {
+            Text("Laisser un avis")
+                .textStyle(.itemName(isPad: isPad, isDetail: true))
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(Color.accentColor)
+                .foregroundColor(.white)
+                .cornerRadius(12)
+        }
+        .accessibilityLabel("Laisser un avis pour cet article")
+        .accessibilityHint("Appuyez pour enregistrer votre commentaire")
     }
 }
 

@@ -19,6 +19,8 @@ final class CatalogViewModel: ObservableObject {
     @Published var selectedItemAverage: Double = 3.0
     
     @Published var shareSheetData: ShareSheetData?
+    @Published var userComment: String = ""
+    @Published var userCommentSaved: Bool = false
     
     private let apiService: APIServiceProtocol
     private let dataService: DataServiceProtocol
@@ -79,6 +81,22 @@ final class CatalogViewModel: ObservableObject {
     // MARK: - Sharing
     func requestShare(for item: ClothingItem) {
         shareSheetData = ShareSheetData(item: item)
+    }
+    
+    // MARK: - Review / Comments
+    func loadComment(for itemID: Int) {
+        let saved = dataService.getComment(for: itemID) ?? ""
+        userComment = saved
+        userCommentSaved = !saved.isEmpty
+    }
+
+    func saveComment(for itemID: Int) {
+        let trimmed = userComment.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return }
+
+        dataService.saveComment(trimmed, for: itemID)
+        userComment = trimmed
+        userCommentSaved = true
     }
 }
 
