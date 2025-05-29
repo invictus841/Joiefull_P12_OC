@@ -21,7 +21,6 @@
 		ACDB2F8A2DCD580900AE0FDA /* CatalogItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDB2F892DCD580900AE0FDA /* CatalogItemCard.swift */; };
 		ACDB2F8E2DCDECE900AE0FDA /* ItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDB2F8D2DCDECE900AE0FDA /* ItemDetailView.swift */; };
 		ACDB2F902DCDF08500AE0FDA /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDB2F8F2DCDF08500AE0FDA /* Components.swift */; };
-		ACDF2AF82DDF45E50091D9B3 /* SharingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDF2AF72DDF45E50091D9B3 /* SharingService.swift */; };
 		ACDF2AFA2DDF4B1F0091D9B3 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDF2AF92DDF4B1F0091D9B3 /* DataService.swift */; };
 		ACDF2B0C2DE044290091D9B3 /* CatalogViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDF2B0B2DE044290091D9B3 /* CatalogViewModelTests.swift */; };
 		ACDF2B0E2DE044380091D9B3 /* MockDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDF2B0D2DE044380091D9B3 /* MockDataService.swift */; };
@@ -56,7 +55,6 @@
 		ACDB2F892DCD580900AE0FDA /* CatalogItemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogItemCard.swift; sourceTree = "<group>"; };
 		ACDB2F8D2DCDECE900AE0FDA /* ItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailView.swift; sourceTree = "<group>"; };
 		ACDB2F8F2DCDF08500AE0FDA /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
-		ACDF2AF72DDF45E50091D9B3 /* SharingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingService.swift; sourceTree = "<group>"; };
 		ACDF2AF92DDF4B1F0091D9B3 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		ACDF2AFF2DE043DF0091D9B3 /* Joiefull_P12_OCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Joiefull_P12_OCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACDF2B0B2DE044290091D9B3 /* CatalogViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewModelTests.swift; sourceTree = "<group>"; };
@@ -160,7 +158,6 @@
 			isa = PBXGroup;
 			children = (
 				ACDF2AF92DDF4B1F0091D9B3 /* DataService.swift */,
-				ACDF2AF72DDF45E50091D9B3 /* SharingService.swift */,
 				ACDB2F822DCD042500AE0FDA /* APIService.swift */,
 			);
 			path = Services;
@@ -302,7 +299,6 @@
 				ACE35FD02DD73011004D5D72 /* CatalogViewModel.swift in Sources */,
 				ACDB2F8A2DCD580900AE0FDA /* CatalogItemCard.swift in Sources */,
 				ACB56ECA2DE846C200F3404A /* ActivityView.swift in Sources */,
-				ACDF2AF82DDF45E50091D9B3 /* SharingService.swift in Sources */,
 				ACB56EC82DE8460D00F3404A /* ShareSheetData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
