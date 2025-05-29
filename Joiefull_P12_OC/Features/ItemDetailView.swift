@@ -47,6 +47,10 @@ struct ItemDetailView: View {
             viewModel.loadRatings(for: item.id)
         }
         .navigationBarBackButtonHidden()
+        .sheet(item: $viewModel.shareSheetData) { data in
+            ActivityView(activityItems: [data.message, data.item.picture.url])
+        }
+
     }
 
     private var imageSection: some View {
@@ -88,11 +92,11 @@ struct ItemDetailView: View {
                 Spacer()
 
                 Button(action: {
-                    SharingService.share(item: item, userComment: userComment)
+                    viewModel.requestShare(for: item)
                 }) {
                     Image("shareIcon")
-                        .renderingMode(.template)
                         .resizable()
+                        .renderingMode(.template)
                         .foregroundColor(.primary)
                         .frame(width: 16, height: 18)
                 }

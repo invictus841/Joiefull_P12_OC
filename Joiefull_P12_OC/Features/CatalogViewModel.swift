@@ -18,6 +18,8 @@ final class CatalogViewModel: ObservableObject {
     @Published var selectedItemRating: Int? = nil
     @Published var selectedItemAverage: Double = 3.0
     
+    @Published var shareSheetData: ShareSheetData?
+    
     private let apiService: APIServiceProtocol
     private let dataService: DataServiceProtocol
 
@@ -72,6 +74,11 @@ final class CatalogViewModel: ObservableObject {
         selectedItemAverage = dataService.getAverageRating(for: itemID)
         
         averageRatings[itemID] = selectedItemAverage
+    }
+    
+    // MARK: - Sharing
+    func requestShare(for item: ClothingItem) {
+        shareSheetData = ShareSheetData(item: item)
     }
 }
 
