@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		ACB56EC82DE8460D00F3404A /* ShareSheetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB56EC72DE8460D00F3404A /* ShareSheetData.swift */; };
-		ACB56ECA2DE846C200F3404A /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB56EC92DE846C200F3404A /* ActivityView.swift */; };
+		ACB56ECF2DE8486300F3404A /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB56ECC2DE8486300F3404A /* ActivityView.swift */; };
+		ACB56ED02DE8486300F3404A /* ShareSheetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB56ECD2DE8486300F3404A /* ShareSheetData.swift */; };
 		ACDB2F742DCCF7D300AE0FDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACDB2F702DCCF7D300AE0FDA /* Assets.xcassets */; };
 		ACDB2F752DCCF7D300AE0FDA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDB2F712DCCF7D300AE0FDA /* ContentView.swift */; };
 		ACDB2F762DCCF7D300AE0FDA /* Joiefull_P12_OCApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDB2F722DCCF7D300AE0FDA /* Joiefull_P12_OCApp.swift */; };
@@ -39,8 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		ACB56EC72DE8460D00F3404A /* ShareSheetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheetData.swift; sourceTree = "<group>"; };
-		ACB56EC92DE846C200F3404A /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		ACB56ECC2DE8486300F3404A /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		ACB56ECD2DE8486300F3404A /* ShareSheetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheetData.swift; sourceTree = "<group>"; };
 		ACDB2F622DCCF7CD00AE0FDA /* Joiefull_P12_OC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Joiefull_P12_OC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACDB2F702DCCF7D300AE0FDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ACDB2F712DCCF7D300AE0FDA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -81,6 +81,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ACB56ECE2DE8486300F3404A /* Sharing */ = {
+			isa = PBXGroup;
+			children = (
+				ACB56ECC2DE8486300F3404A /* ActivityView.swift */,
+				ACB56ECD2DE8486300F3404A /* ShareSheetData.swift */,
+			);
+			path = Sharing;
+			sourceTree = "<group>";
+		};
 		ACDB2F592DCCF7CD00AE0FDA = {
 			isa = PBXGroup;
 			children = (
@@ -143,8 +152,7 @@
 		ACDB2F872DCD55C400AE0FDA /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				ACB56EC92DE846C200F3404A /* ActivityView.swift */,
-				ACB56EC72DE8460D00F3404A /* ShareSheetData.swift */,
+				ACB56ECE2DE8486300F3404A /* Sharing */,
 				ACE35FCF2DD73011004D5D72 /* CatalogViewModel.swift */,
 				ACDB2F892DCD580900AE0FDA /* CatalogItemCard.swift */,
 				ACDB2F842DCD46B800AE0FDA /* CatalogView.swift */,
@@ -297,9 +305,9 @@
 				ACDB2F762DCCF7D300AE0FDA /* Joiefull_P12_OCApp.swift in Sources */,
 				ACDB2F902DCDF08500AE0FDA /* Components.swift in Sources */,
 				ACE35FD02DD73011004D5D72 /* CatalogViewModel.swift in Sources */,
+				ACB56ECF2DE8486300F3404A /* ActivityView.swift in Sources */,
+				ACB56ED02DE8486300F3404A /* ShareSheetData.swift in Sources */,
 				ACDB2F8A2DCD580900AE0FDA /* CatalogItemCard.swift in Sources */,
-				ACB56ECA2DE846C200F3404A /* ActivityView.swift in Sources */,
-				ACB56EC82DE8460D00F3404A /* ShareSheetData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
