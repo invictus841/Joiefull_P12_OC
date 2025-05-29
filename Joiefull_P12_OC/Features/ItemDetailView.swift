@@ -13,18 +13,6 @@ struct ItemDetailView: View {
 
     @ObservedObject var viewModel: CatalogViewModel
     let item: ClothingItem
-    
-    private var isFavorited: Bool {
-        viewModel.isFavorite(item.id)
-    }
-
-    var isPad: Bool {
-        sizeClass == .regular
-    }
-    
-    var imageSize: CGSize {
-        isPad ? CGSize(width: 451, height: 408) : CGSize(width: 328, height: 431)
-    }
 
     var body: some View {
         ScrollView {
@@ -65,8 +53,11 @@ struct ItemDetailView: View {
         }
 
     }
+}
 
-    private var imageSection: some View {
+// MARK: - Views
+private extension ItemDetailView {
+    var imageSection: some View {
         ZStack(alignment: .top) {
             AsyncImage(url: item.picture.url) { phase in
                 if let image = phase.image {
@@ -135,8 +126,8 @@ struct ItemDetailView: View {
             }
         }
     }
-
-    private var headerSection: some View {
+    
+     var headerSection: some View {
         HStack(alignment: .top) {
             Text(item.name)
                 .textStyle(.itemName(isPad: isPad, isDetail: true))
@@ -156,7 +147,7 @@ struct ItemDetailView: View {
         }
     }
 
-    private var priceSection: some View {
+     var priceSection: some View {
         HStack {
             Text(String(format: "%.2f €", item.price))
                 .textStyle(.itemPrice(isPad: isPad, isDetail: true))
@@ -172,13 +163,13 @@ struct ItemDetailView: View {
         }
     }
 
-    private var descriptionSection: some View {
+     var descriptionSection: some View {
         Text(item.picture.description)
             .textStyle(.description(isPad: isPad))
             .padding(.top, 8)
     }
 
-    private var ratingSection: some View {
+     var ratingSection: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack(spacing: 14) {
                 Image("userPic")
@@ -210,7 +201,7 @@ struct ItemDetailView: View {
         .padding(.top, 16)
     }
 
-    private var commentSection: some View {
+     var commentSection: some View {
         TextField("Partagez ici vos impressions sur cette pièce", text: $viewModel.userComment)
             .frame(height: isPad ? 69 : 53)
             .padding(.horizontal, 8)
@@ -225,7 +216,7 @@ struct ItemDetailView: View {
             .padding(.vertical)
     }
     
-    private var submitCommentButton: some View {
+     var submitCommentButton: some View {
         let isDisabled = viewModel.userComment.trimmingCharacters(in: .whitespacesAndNewlines).count < 2
 
         return Button(action: {
@@ -245,6 +236,20 @@ struct ItemDetailView: View {
     }
 }
 
+// MARK: - Helpers
+private extension ItemDetailView {
+    private var isFavorited: Bool {
+        viewModel.isFavorite(item.id)
+    }
+
+    var isPad: Bool {
+        sizeClass == .regular
+    }
+    
+    var imageSize: CGSize {
+        isPad ? CGSize(width: 451, height: 408) : CGSize(width: 328, height: 431)
+    }
+}
 
 #Preview {
     VStack {
