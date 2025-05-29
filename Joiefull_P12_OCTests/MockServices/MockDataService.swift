@@ -12,6 +12,7 @@ import Foundation
 final class MockDataService: DataServiceProtocol {
     var favorites: [Int] = []
     var userRatings: [Int: Int] = [:]
+    var comments: [Int: String] = [:]
 
     func loadFavorites() -> [Int] {
         return favorites
@@ -33,5 +34,13 @@ final class MockDataService: DataServiceProtocol {
         let base = 3.0
         let user = Double(userRatings[itemID] ?? 3)
         return (base + user) / 2.0
+    }
+    
+    func saveComment(_ comment: String, for itemID: Int) {
+        comments[itemID] = comment
+    }
+
+    func getComment(for itemID: Int) -> String? {
+        comments[itemID]
     }
 }

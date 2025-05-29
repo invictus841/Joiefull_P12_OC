@@ -82,6 +82,61 @@ final class CatalogViewModelTests: XCTestCase {
         XCTAssertEqual(sut.selectedItemRating, 4)
         XCTAssertEqual(sut.selectedItemAverage, 3.5)
     }
+    
+    // MARK: - Comments
+
+    func test_givenNoComment_whenLoadingComment_thenUserCommentIsEmpty() {
+        // Given
+        let itemID = 1
+        mockDataService.comments = [:]
+
+        // When
+        sut.loadComment(for: itemID)
+
+        // Then
+        XCTAssertEqual(sut.userComment, "")
+        XCTAssertFalse(sut.userCommentSaved)
+    }
+
+    func test_givenSavedComment_whenLoadingComment_thenUserCommentIsSet() {
+        // Given
+        let itemID = 1
+        mockDataService.comments[itemID] = "Très beau produit !"
+
+        // When
+        sut.loadComment(for: itemID)
+
+        // Then
+        XCTAssertEqual(sut.userComment, "Très beau produit !")
+        XCTAssertTrue(sut.userCommentSaved)
+    }
+
+    func test_givenValidComment_whenSavingComment_thenItIsStoredAndFlagIsSet() {
+        // Given
+        let itemID = 1
+        sut.userComment = "Parfait!"
+
+        // When
+        sut.saveComment(for: itemID)
+
+        // Then
+        XCTAssertEqual(mockDataService.comments[itemID], "Parfait!")
+        XCTAssertTrue(sut.userCommentSaved)
+    }
+
+    func test_givenEmptyComment_whenSavingComment_thenItIsIgnored() {
+        // Given
+        let itemID = 1
+        sut.userComment = "   "  // Only spaces
+
+        // When
+        sut.saveComment(for: itemID)
+
+        // Then
+        XCTAssertNil(mockDataService.comments[itemID])
+        XCTAssertFalse(sut.userCommentSaved)
+    }
+
 
     func test_givenNewRating_whenUpdated_thenValueIsStoredAndAverageUpdated() {
         // Given
