@@ -226,19 +226,20 @@ struct ItemDetailView: View {
     }
     
     private var submitCommentButton: some View {
-        Button(action: {
-            withAnimation {
-                viewModel.saveComment(for: item.id)
-            }
+        let isDisabled = viewModel.userComment.trimmingCharacters(in: .whitespacesAndNewlines).count < 2
+
+        return Button(action: {
+            viewModel.saveComment(for: item.id)
         }) {
             Text("Laisser un avis")
                 .textStyle(.itemName(isPad: isPad, isDetail: true))
                 .frame(maxWidth: .infinity)
                 .padding()
-                .background(Color.accentColor)
+                .background(isDisabled ? Color.gray.opacity(0.3) : Color.accentColor)
                 .foregroundColor(.white)
                 .cornerRadius(12)
         }
+        .disabled(isDisabled)
         .accessibilityLabel("Laisser un avis pour cet article")
         .accessibilityHint("Appuyez pour enregistrer votre commentaire")
     }
