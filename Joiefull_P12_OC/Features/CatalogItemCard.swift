@@ -51,16 +51,18 @@ private extension CatalogItemCard {
             FavoriteBubble(count: item.likes + (isFavorited ? 1 : 0), isPad: isPad, isDetail: false, isFavorited: isFavorited)
         }
     }
-
+    
     var headerSection: some View {
-        HStack(alignment: .top) {
+        let formattedAverage = String(format: "%.1f", averageRating)
+        
+        return HStack(alignment: .top) {
             Text(item.name)
                 .textStyle(.itemName(isPad: isPad, isDetail: false))
                 .lineLimit(1)
                 .truncationMode(.tail)
-
+            
             Spacer(minLength: 4)
-
+            
             HStack(spacing: 4) {
                 Image("filledStar")
                     .resizable()
@@ -70,12 +72,15 @@ private extension CatalogItemCard {
                     .textStyle(.ratingAverage(isPad: isPad, isDetail: false))
             }
             .accessibilityElement(children: .combine)
-            .accessibilityLabel("Note moyenne \(averageRating) étoiles")
+            .accessibilityLabel("Note moyenne \(formattedAverage) étoiles")
         }
     }
 
     var priceSection: some View {
-        HStack {
+        let formattedPrice = String(format: "%.2f", item.price)
+        let formattedOriginal = String(format: "%.2f", item.originalPrice)
+        
+        return HStack {
             Text(String(format: "%.2f €", item.price))
                 .textStyle(.itemPrice(isPad: isPad, isDetail: false))
 
@@ -89,7 +94,11 @@ private extension CatalogItemCard {
             }
         }
         .accessibilityElement(children: .combine)
-        .accessibilityLabel("Prix actuel \(item.price) euros" + (item.isDiscounted ? ", au lieu de \(item.originalPrice) euros" : ""))
+        .accessibilityLabel(
+            item.isDiscounted ?
+            "Prix actuel \(formattedPrice) euros, au lieu de \(formattedOriginal) euros" :
+            "Prix \(formattedPrice) euros"
+        )
     }
 }
 

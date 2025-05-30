@@ -128,7 +128,9 @@ private extension ItemDetailView {
     }
     
      var headerSection: some View {
-        HStack(alignment: .top) {
+         let formattedAverage = String(format: "%.1f", viewModel.selectedItemAverage)
+         
+        return HStack(alignment: .top) {
             Text(item.name)
                 .textStyle(.itemName(isPad: isPad, isDetail: true))
 
@@ -143,25 +145,35 @@ private extension ItemDetailView {
                     .textStyle(.ratingAverage(isPad: isPad, isDetail: true))
             }
             .accessibilityElement(children: .combine)
-            .accessibilityLabel("Note moyenne \(viewModel.selectedItemAverage) étoiles")
+            .accessibilityLabel("Note moyenne \(formattedAverage) étoiles")
         }
     }
 
-     var priceSection: some View {
-        HStack {
-            Text(String(format: "%.2f €", item.price))
+    var priceSection: some View {
+        let formattedPrice = String(format: "%.2f €", item.price)
+        let formattedOriginal = String(format: "%.2f €", item.originalPrice)
+
+        return HStack {
+            Text(formattedPrice)
                 .textStyle(.itemPrice(isPad: isPad, isDetail: true))
 
             Spacer()
 
             if item.isDiscounted {
-                Text(String(format: "%.2f €", item.originalPrice))
+                Text(formattedOriginal)
                     .textStyle(.itemPrice(isPad: isPad, isDetail: true))
                     .strikethrough()
                     .opacity(0.3)
             }
         }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(item.isDiscounted
+            ? "Prix actuel \(formattedPrice), au lieu de \(formattedOriginal)"
+            : "Prix \(formattedPrice)"
+        )
     }
+
+
 
      var descriptionSection: some View {
         Text(item.picture.description)
@@ -180,6 +192,8 @@ private extension ItemDetailView {
 
                 HStack(spacing: 14) {
                     ForEach(1...5, id: \.self) { star in
+                        let starLabel = star == 1 ? "1 étoile" : "\(star) étoiles"
+                        
                         Image(star <= (viewModel.selectedItemRating ?? 0) ? "filledStar" : "emptyStar")
                             .resizable()
                             .renderingMode(.template)
@@ -192,7 +206,8 @@ private extension ItemDetailView {
                                     viewModel.updateRating(for: item.id, rating: star)
                                 }
                             }
-                            .accessibilityLabel("\(star) étoile\(star > 1 ? "s" : "")")
+                        
+                        .accessibilityLabel(starLabel)
                             .accessibilityAddTraits(star == viewModel.selectedItemRating ? .isSelected : .isButton)
                     }
                 }
