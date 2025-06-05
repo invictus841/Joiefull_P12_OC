@@ -83,6 +83,23 @@ final class CatalogViewModelTests: XCTestCase {
         XCTAssertEqual(sut.selectedItemAverage, 3.5)
     }
     
+    // MARK: - Sharing
+
+    func test_givenItem_whenRequestShare_thenShareSheetDataIsSet() {
+        // Given
+        let item = ClothingItem.sample
+
+        // When
+        sut.requestShare(for: item)
+
+        // Then
+        XCTAssertNotNil(sut.shareSheetData)
+        XCTAssertEqual(sut.shareSheetData?.item, item)
+        XCTAssertTrue(sut.shareSheetData?.message.contains(item.name) ?? false)
+        XCTAssertTrue(sut.shareSheetData?.message.contains(String(format: "%.2f €", item.price)) ?? false)
+    }
+
+    
     // MARK: - Comments
 
     func test_givenNoComment_whenLoadingComment_thenUserCommentIsEmpty() {
